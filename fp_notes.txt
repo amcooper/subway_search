@@ -1,0 +1,13 @@
+Final project notes 
+February 2015
+
+Search for businesses along a train commute
+
+1. User inputs starting address
+2. User inputs destination address
+3. User inputs business type
+4. App calculates train
+
+
+Save previous serches
+Save & name addresses
