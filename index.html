@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Wick of Bushwick</title>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script>
+			var directionsDisplay;
+			var directionsService = new google.maps.DirectionsService();
+
+			function initialize () {
+				var mapProp = {
+					center : new google.maps.LatLng(40.739888, -73.990075),
+					zoom : 11,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+				directionsDisplay = new google.maps.DirectionsRenderer();
+				directionsDisplay.setMap(map);
+				directionsDisplay.setPanel(document.getElementById('directions-panel'));
+				var control = document.getElementById('control');
+				control.style.display = 'block';
+				map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+			}
+
+			function calcRoute() {
+			    var start = document.getElementById('address_origin').value;
+			    var end = document.getElementById('address_destination').value;
+			    var request = {
+			    	origin: start,
+			    	destination: end,
+			    	travelMode: google.maps.TravelMode.DRIVING
+			    };
+			    directionsService.route(request, function(response, status) {
+			      if (status == google.maps.DirectionsStatus.OK) {
+			        directionsDisplay.setDirections(response);
+			      }
+			    });
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<style>
+		  html, body, #map-canvas {
+		    height: 100%;
+		    margin: 0px;
+		    padding: 0px
+		  }
+		  #panel {
+		    position: absolute;
+		    top: 5px;
+		    left: 50%;
+		    margin-left: -180px;
+		    z-index: 5;
+		    background-color: #fff;
+		    padding: 5px;
+		    border: 1px solid #999;
+		  }
+		</style>
+		<style>
+		  #directions-panel {
+		    height: 100%;
+		    float: right;
+		    width: 390px;
+		    overflow: auto;
+		  }
+
+		  #map-canvas {
+		    margin-right: 400px;
+		  }
+
+		  @media print {
+		    #map-canvas {
+		      height: 500px;
+		      margin: 0;
+		    }
+
+		    #directions-panel {
+		      float: none;
+		      width: auto;
+		    }
+		  }
+	  </style>
+	</head>
+
+	<body>
+		<div id="control">
+            <label for="address"> Addresses:</label>
+            <input type="text" id="address_origin" placeholder="Origin" />&nbsp;<input type="text" id="address_destination" placeholder="Destination" />
+            <button onclick="calcRoute()">Locate</button>
+        </div>
+        <div id="directions-panel"></div>
+		<div id="googleMap"></div>
+	</body>
+</html>

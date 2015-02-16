@@ -9,5 +9,16 @@ Search for businesses along a train commute
 4. App calculates train
 
 
-Save previous serches
+Save previous searches
 Save & name addresses
+
+
+USER STORIES
+
+1. User logs in or creates account
+2. New search or saved search
+3. New search: input or retrieve starting address, input or retrieve destination address, input business type
+3bis. Option to save each address with a name.
+4. to Google Maps with train route
+5. Algorithm: star rating divided by distance from station. 
+6. Show top ten.
