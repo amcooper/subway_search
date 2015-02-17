@@ -21,4 +21,19 @@ USER STORIES
 3bis. Option to save each address with a name.
 4. to Google Maps with train route
 5. Algorithm: star rating divided by distance from station. 
-6. Show top ten.
+6. Show top twenty.
+
+whole_list = [];
+for i in subway_stops do
+	search for bakeries near i
+	for j in results do
+		check j for uniqueness
+		add factor (rating/distance) to j
+		push j into whole_list
+	end
+end
+sort whole_list by factor
+?strip factor from whole_list
+display map with whole_list
+
+
