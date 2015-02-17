@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Wick of Bushwick</title>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script src="fp_main.js"></script>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<link href="fp_map.css" rel="stylesheet" type="text/css">
+		<link href="fp_route.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<div id="control">
+            <label for="address">Addresses:</label>
+            <input type="text" id="address_origin" placeholder="Origin" />&nbsp;<input type="text" id="address_destination" placeholder="Destination" />
+            <br>
+            <label for="search_term">Search term:</label>
+            <input type="text" id="search_term" placeholder="Search term" />
+            <br>
+            <button onclick="calcRoute();">Search</button>
+        </div>
+        <div id="directions-panel"></div>
+		<div id="googleMap"></div>
+	</body>
+</html>
