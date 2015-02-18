@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS addresses;
 CREATE TABLE addresses (
   id INTEGER PRIMARY KEY,
+  user_id INTEGER REFERENCES users
   name TEXT,
   address TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -20,6 +21,6 @@ CREATE TABLE users (
           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TRIGGER authentication_exercise BEFORE UPDATE ON users BEGIN
+CREATE TRIGGER users_trigger BEFORE UPDATE ON users BEGIN
   UPDATE users SET updated_at = CURRENT_TIMESTAMP WHERE id = new.id;
 END;
