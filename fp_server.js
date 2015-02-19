@@ -24,6 +24,10 @@ app.get('/', function(req, res) {
 	res.sendFile(__dirname + '/public/index.html');
 });
 
+app.get('/start', function(req, res) {
+	res.sendFile(__dirname + '/public/start.html');
+});
+
 app.post('/register', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
@@ -36,7 +40,8 @@ app.post('/register', function(req, res) {
 		db.run("INSERT INTO users (username, password) VALUES (?, ?)", username, hash, function(err) {
 			if (err) { throw err; }  
 			req.session.valid_user = true;
-			res.sendFile(__dirname + '/public/start.html');
+			res.redirect('/start');
+			// res.sendFile(__dirname + '/public/start.html');
 		});
 	}
 });
@@ -47,14 +52,16 @@ app.post('/session', function(req, res) {
 	db.get("SELECT * FROM users WHERE username = ?", username, function(err, row) {
 		if (err) { throw err; }
 		if (row) {
+			console.log("if (row) passed. ");
 			var passwordMatches = bcrypt.compareSync(password, row.password);
 			if (passwordMatches) {
 				req.session.valid_user = true;
-				res.sendFile(__dirname + '/public/start.html');
+				res.redirect('/start');
+				// res.sendFile(__dirname + '/public/start.html');
 			} else {
 				res.redirect('/');
 			}
-		}
+		} else { console.log("The username is not registered."); res.redirect('/'); }
 	});
 });
 
@@ -92,7 +99,7 @@ app.put('/route/:id', function(req, res) {
 	var nickname = req.body.nickname;
 	var route_origin = req.body.route_origin;
 	var route_destination = req.body.route_destination;
-	db.run("UPDATE routes SET nickname = ?, route_origin = ?, route_destination WHERE id = ?", nickname, route_origin, route_destination, function (err) {
+	db.run("UPDATE routes SET nickname = ?, route_origin = ?, route_destination = ? WHERE id = ?", nickname, route_origin, route_destination, id, function (err) {
 	    if (err) { throw err; }
 	    db.get("SELECT * FROM routes WHERE id = ?", id, function(err, row) {
 	    	if (err) { throw err; }

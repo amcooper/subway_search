@@ -2,7 +2,7 @@ var setLiToRoute = function(li, route) {
 	li.setAttribute('id', 'route' + route.id);
 	li.innerHTML = "";
 
-	var routeText = route.nickname + ": from" + route.route_origin + " to " + route.route_destination;
+	var routeText = route.nickname + ": from " + route.route_origin + " to " + route.route_destination;
 	var routeTextNode = document.createTextNode(routeText);
 	li.appendChild(routeTextNode);
 
@@ -50,14 +50,14 @@ var editRoute = function(li, nickname, route_origin, route_destination) {
 	updateButton.addEventListener('click', function() {
 		var newNickname = nicknameField.value;
 		var newOrigin = originField.value;
-		var newDestination = destinatinField.value;
+		var newDestination = destinationField.value;
 		updateRoute(li, newNickname, newOrigin, newDestination); 
 	});
 	li.appendChild(updateButton);
 };
 
 var updateRoute = function(li, newNickname, newOrigin, newDestination) {
-	var id = li.id.substring(3);
+	var id = li.id.substring(5);
 	var xhr = new XMLHttpRequest();
 	xhr.open('PUT', 'http://localhost:3000/route/' + id);
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
