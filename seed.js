@@ -11,8 +11,8 @@ db.run("INSERT INTO users (username, password) VALUES (?, ?)",
   }
 );
 
-db.run("INSERT INTO addresses (user_id, nickname, address) VALUES (?, ?, ?)",
-  1, 'example', '50 Broadway, New York, NY',
+db.run("INSERT INTO routes (user_id, nickname, route_origin, route_destination) VALUES (?, ?, ?, ?)",
+  1, 'example', '50 Broadway, New York, NY', '200 5th Av, New York, NY',
   function(err) {
     if (err) { throw err; }
   }

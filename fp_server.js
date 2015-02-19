@@ -25,17 +25,22 @@ app.get('/', function(req, res) {
 });
 
 app.get('/start', function(req, res) {
-	res.sendFile(__dirname + '/public/start.html');
+	res.sendFile(__dirname + '/start.html');
 });
 
 app.post('/register', function(req, res) {
+	console.log("Registration."); //debug
 	var username = req.body.username;
+	console.log("Username: " + username); //debug
 	var password = req.body.password;
+	console.log("Password: " + password); //debug
 	var confirm_password = req.body.confirm_password;
+	console.log("Confirm: " + confirm_password); //debug
 	if (password !== confirm_password) {
 		console.log("Passwords do not match.");
 		res.redirect('/');
 	} else {
+		console.log("Passwords match."); //debug
 		var hash = bcrypt.hashSync(password, 11);
 		db.run("INSERT INTO users (username, password) VALUES (?, ?)", username, hash, function(err) {
 			if (err) { throw err; }  
@@ -46,13 +51,16 @@ app.post('/register', function(req, res) {
 	}
 });
 
-app.post('/session', function(req, res) { 
+app.post('/session', function(req, res) {
+	console.log("Session."); //debug
 	var username = req.body.username;
+	console.log("Username: " + req.body.username + " " + username); //debug
 	var password = req.body.password; 
+	console.log("Password: " + password); //debug
 	db.get("SELECT * FROM users WHERE username = ?", username, function(err, row) {
 		if (err) { throw err; }
 		if (row) {
-			console.log("if (row) passed. ");
+			// console.log("if (row) passed. ");
 			var passwordMatches = bcrypt.compareSync(password, row.password);
 			if (passwordMatches) {
 				req.session.valid_user = true;
