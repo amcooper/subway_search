@@ -1,16 +1,19 @@
 // fp_server.js
 
 var express = require('express');
+var ejs = require('ejs');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
 var sqlite3 = require('sqlite3').verbose();
 var cors = require('cors');
-// var secret = require('./secret.json'); // For password stored in JSON object & gitignored, rather than in a database.
+var fs = require('fs');
+var secret = require('./secret.json'); // For password stored in JSON object & gitignored, rather than in a database.
 var db = new sqlite3.Database("fp.db");
 
 var app = express();
 
+app.use(express.static('public'));
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
@@ -21,11 +24,11 @@ app.use(session({
 }));
 
 app.get('/', function(req, res) {
-	res.sendFile(__dirname + '/public/index.html');
+	res.render("b_index.ejs", { valid_user: false });
 });
 
 app.get('/start', function(req, res) {
-	res.sendFile(__dirname + '/start.html');
+	res.redirect('/');
 });
 
 app.post('/register', function(req, res) {
@@ -45,7 +48,8 @@ app.post('/register', function(req, res) {
 		db.run("INSERT INTO users (username, password) VALUES (?, ?)", username, hash, function(err) {
 			if (err) { throw err; }  
 			req.session.valid_user = true;
-			res.redirect('/start');
+			res.render("b_index.ejs", { valid_user: req.session.valid_user });
+			// res.redirect('/start');
 			// res.sendFile(__dirname + '/public/start.html');
 		});
 	}
@@ -64,7 +68,8 @@ app.post('/session', function(req, res) {
 			var passwordMatches = bcrypt.compareSync(password, row.password);
 			if (passwordMatches) {
 				req.session.valid_user = true;
-				res.redirect('/start');
+				res.render("b_index.ejs", { valid_user: req.session.valid_user });
+					// res.redirect('/start');
 				// res.sendFile(__dirname + '/public/start.html');
 			} else {
 				res.redirect('/');
