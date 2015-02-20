@@ -1,0 +1,191 @@
+<!-- b_index.ejs -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Wick of Bushwick</title>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<!-- <script src="fp_main.js"></script> -->
+ 		<script>
+			var directionsDisplay;
+			var directionsService = new google.maps.DirectionsService();
+
+			function initialize () {
+				var mapProp = {
+					center : new google.maps.LatLng(40.739888, -73.990075),
+					zoom : 11,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				};
+				var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+				directionsDisplay = new google.maps.DirectionsRenderer();
+				directionsDisplay.setMap(map);
+				directionsDisplay.setPanel(document.getElementById('directions-panel'));
+				var control = document.getElementById('control');
+				control.style.display = 'block';
+				map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+			}
+
+			function calcRoute() {
+			    var start = document.getElementById('address_origin').value;
+			    var end = document.getElementById('address_destination').value;
+			    var request = {
+			    	origin: start,
+			    	destination: end,
+			    	travelMode: google.maps.TravelMode.TRANSIT
+			    };
+			    directionsService.route(request, function(response, status) {
+			      if (status == google.maps.DirectionsStatus.OK) {
+			      	console.log(response);
+			        directionsDisplay.setDirections(response);
+			      }
+			    });
+			}
+
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script> 
+
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<!-- <link href="fp_map.css" rel="stylesheet" type="text/css"> -->
+		<style>
+			html, body, #googleMap {
+			height: 100%;
+			margin: 0px;
+			padding: 0px
+			}
+			#panel {
+			position: absolute;
+			top: 5px;
+			left: 50%;
+			margin-left: -180px;
+			z-index: 5;
+			background-color: #fff;
+			padding: 5px;
+			border: 1px solid #999;
+			}
+		</style>
+		<!-- <link href="fp_route.css" rel="stylesheet" type="text/css">  -->
+		<style>
+			#directions-panel {
+			    height: 100%;
+			    float: right;
+			    width: 390px;
+			    overflow: auto;
+			}
+
+			#control {
+			    background: #fff;
+			    padding: 5px;
+			    font-size: 14px;
+			    font-family: Arial;
+			    border: 1px solid #ccc;
+			    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+			    display: none;
+			}
+
+			#googleMap {
+			    margin-right: 400px;
+			}
+
+			@media print {
+			    #googleMap {
+				    height: 500px;
+				    margin: 0;
+			    }
+
+			    #directions-panel {
+				    float: none;
+				    width: auto;
+			    }
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- <div class="container"> -->
+			<div id="control">
+	            <label for="address">Addresses:</label>
+	            <input type="text" id="address_origin" placeholder="Origin" />&nbsp;<input type="text" id="address_destination" placeholder="Destination" />
+	            <br>
+	            <label for="search_term">Search term:</label>
+	            <input type="text" id="search_term" placeholder="Search term" />
+	            <br>
+	            <button onclick="calcRoute();">Search</button>
+	        </div>
+	        <div id="directions-panel"></div>
+			<div id="googleMap"></div>
+
+		<!-- <div><button type="button" data-toggle="modal" data-target="#myModal">Launch</button></div> -->
+
+		<div class="modal fade" id="myModalRegister">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Authentication</h4>
+		      </div>
+		      <div class="modal-body">
+				<form action="/register" method="POST">
+			        <h2 class="form-signin-heading">Register</h2>
+			        <label for="inputEmail" class="sr-only">Email address</label>
+			        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			        <label for="inputPassword" class="sr-only">Password</label>
+			        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			        <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
+			        <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm password" required>
+<!-- 			        <div class="checkbox">
+			          <label>
+			            <input type="checkbox" value="remember-me"> Remember me
+			          </label>
+			        </div> -->
+			        <button class="btn btn-default btn-primary" type="submit">R e g i s t e r</button>
+			        <button type="button" class="btn" data-dismiss="modal" data-toggle="modal" data-target="#myModalLogin">Switch to Login</button>
+		        </form>
+
+		      </div>
+<!-- 		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div> -->
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+		<div class="modal fade" id="myModalLogin">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Authentication</h4>
+		      </div>
+		      <div class="modal-body">
+					<form class="form-signin" action="/session" method="POST">
+			        <h2 class="form-signin-heading">Log in</h2>
+			        <label for="inputEmail" class="sr-only">Email address</label>
+			        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			        <label for="inputPassword" class="sr-only">Password</label>
+			        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+<!-- 			        <div class="checkbox">
+			          <label>
+			            <input type="checkbox" value="remember-me"> Remember me
+			          </label>
+			        </div> -->
+			        <button class="btn btn-default btn-primary" type="submit">Login</button>
+			        <button type="button" class="btn" data-dismiss="modal" data-toggle="modal" data-target="#myModalRegister">Switch to Register</button>
+			      </form>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		    $(window).load(function(){
+		        $('#myModalLogin').modal('show');
+		    });
+		</script>
+	</body>
+</html>
