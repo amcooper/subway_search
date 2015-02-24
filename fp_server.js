@@ -13,7 +13,7 @@ var db = new sqlite3.Database("fp.db");
 
 var app = express();
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
 
@@ -24,12 +24,13 @@ app.use(session({
 }));
 
 app.get('/', function(req, res) {
-	res.render("fresh_start.html");
+	console.log("Root route."); //debug
+	res.sendFile(__dirname + "/public/html/fresh_start.html");
 });
 
-app.get('/start', function(req, res) {
-	res.render("start_full.html");
-});
+// app.get('/start', function(req, res) {
+// 	res.render("start_full.html");
+// });
 
 app.post('/register', function(req, res) {
 	console.log("Registration."); //debug
@@ -49,8 +50,8 @@ app.post('/register', function(req, res) {
 			if (err) { throw err; }  
 			req.session.valid_user = true;
 			// res.render("b_index.ejs", { valid_user: req.session.valid_user });
-			res.redirect('/start');
-			// res.sendFile(__dirname + '/public/start.html');
+			// res.redirect('/start');
+			res.sendFile(__dirname + '/public/html/start_full.html');
 		});
 	}
 });
@@ -69,8 +70,8 @@ app.post('/session', function(req, res) {
 			if (passwordMatches) {
 				req.session.valid_user = true;
 				// res.render("b_index.ejs", { valid_user: req.session.valid_user });
-				res.redirect('/start');
-				// res.sendFile(__dirname + '/public/start.html');
+				// res.redirect('/start');
+				res.sendFile(__dirname + '/public/html/start_full.html');
 			} else {
 				res.redirect('/');
 			}
