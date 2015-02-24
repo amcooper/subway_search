@@ -1,0 +1,680 @@
+/* from seamless.com : address.css */
+#Starthere
+{
+	position: relative;
+}
+
+.start-order h4 input
+{
+	margin-top: 15px !important;
+}
+
+.findfoodbutton
+{
+	background-image: url(../img/consumer/splash-bars.png);
+	background-position: -12px -158px;
+	padding-left: 5px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	width: 260px;
+	height: 33px;
+	display: inline-block;
+	background-repeat: no-repeat;
+}
+.findfoodbutton a
+{
+	text-decoration: none;
+}
+.findfoodbutton:hover
+{
+	background-position: -13px -208px;
+	text-decoration: none;
+}
+.foodtext
+{
+	position: relative;
+	top: -13px;
+}
+.largewhite
+{
+	font-family: "museo-slab-1" , "museo-slab-2" !important;
+	font-size: 22px;
+	font-weight: 700;
+	height: 33px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	line-height: 1.75em;
+}
+
+.new-address-link {
+	display: block;
+	clear: both;
+	color: #339999;
+	font-weight: bold;
+	font-size: 11px;
+	margin:0 0 5px 0;
+	padding: 0 0 5px 0;
+	border-bottom: 3px dotted #C90117;
+}
+
+.new-address-link.open {
+    border-bottom: none;
+}
+
+
+.single-address-entry-module, .search-module
+{
+	border: solid 1px #999;
+	padding: 3px;
+	width: 250px;
+	line-height: 22px !important;
+	box-shadow: 1px 1px #999999 inset;
+	background-color: #fff;
+	margin-bottom: 12px;
+}
+
+.single-address-entry-module.error {
+	border-color: #CC0000;
+	font-style: normal;
+	font-size: inherit;
+    margin-bottom: 0;
+}
+		
+.inner
+{
+	position: relative;
+	width: 228px;
+	height: 22px;
+	padding-left: 25px;
+	line-height: 22px;
+}
+
+.single-address-entry-module .inner {
+	background: transparent url('/food-delivery/img/icon-house.png') no-repeat scroll 0 1px;
+}
+
+.search-module .inner {
+	background: transparent url('/food-delivery/img/searchicon.gif') no-repeat scroll 0 1px;
+}
+		
+.inner > div
+{
+	height: 22px !important;
+}
+.search-module .inner input, .single-address-entry-module .inner input {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}		
+input.single-address-input, input.search-keyword
+{
+	border: medium none;
+	padding: 0 !important;
+	width: 100%;
+	outline: medium none;
+	overflow: hidden;
+	background: url("data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw%3D%3D") repeat scroll 0 0 transparent;
+	position: relative;
+	z-index: 5;
+	height: 22px !important;
+	line-height: 22px !important;
+	vertical-align: baseline;
+	margin: 0 0 0 -1px !important;
+	box-shadow: none !important;
+	font-size: 11px;
+	font-weight: normal;	
+}
+
+input.single-address-input:focus, input.search-keyword:focus {
+	-moz-box-shadow: none !important; 
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.entered-single-address
+{
+	background: none repeat scroll 0% 0% transparent;
+	color: #000;
+	position: absolute;
+	z-index: 2;
+	line-height: 22px;
+	width: 228px;
+	overflow: hidden;
+	font-size: 11px;
+	font-weight: normal;
+}
+		
+.predicted, .watermark
+{
+	background: none no-repeat scroll 0% 0% transparent;
+	color: #C0C0C0;
+	position: absolute;
+	text-align: left;
+	line-height: 22px;
+	font-size: 11px;
+	font-weight: normal;
+}
+		
+.watermark.lighter 
+{
+	color: #ddd;
+}
+
+.single-address-error {
+	color: #CC0000;
+    font-style: italic;
+    font-size: 11px;
+	margin:5px 0;
+}
+
+.container-overlay
+{
+	position: absolute;
+	background-color: #777;
+	opacity: 0.7;
+	filter: alpha(opacity = 70);
+	z-index: 1001;
+}
+
+.overlay-message
+{
+	position: absolute;
+	padding-top: 37px;
+	text-align: center;
+	font-weight: bold;
+	color: #eee;
+	font-size: 1.3em;
+	background: transparent url('/food-delivery/img/loading.gif') no-repeat center top;
+	z-index: 1002;
+}
+
+.inner.searching
+{
+	background: #fff url("/food-delivery/img/searchactivity.gif") no-repeat 0px 0px;
+}
+
+/*Auto Complete Css*/
+.ac_results
+{
+	padding: 0px;
+	border: 1px solid #ccc;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+	margin: 1px 0 0 -28px;
+}
+.ac_results ul
+{
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.ac_results li
+{
+	margin: 0px;
+	cursor: default;
+	display: block; /*  	if width will be 100% horizontal scrollbar will apear  	when scroll mode will be used 	*/ /*width: 100%;*/
+	font: menu;
+	font-size: 12px; /*  	it is very important, if line-height not setted or setted  	in relative units scroll will be broken in firefox 	*/
+	line-height: 16px;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+}
+.ac_results li a
+{
+	display: block;
+	padding: 5px 10px;
+	font-size: 11px;
+	color: #555;
+}
+.ac_results em
+{
+	background-color: #bfe3da;
+	font-style: normal;
+	color: #339999;
+	padding:0;
+}
+.ac_results .food-results
+{
+	background-color: #c2e0e0;
+}
+.ac_results .cuisine-results
+{
+	background-color: #e7f3f3;
+}
+.ac_results .all
+{
+	background-color: #c2e0e0;
+}
+.ac_results span.location
+{
+	color: #555;
+}
+.ac_results .no-results
+{
+	color: #555;
+	padding: 5px 10px;
+	display: block;
+}
+.ac_results .no-results em
+{
+	background-color: #BFE3DA;
+	color: #339999;
+}
+.ac_results .ac_over a
+{
+	text-decoration: underline;
+}
+#NewbieModule {
+    background: none repeat scroll 0 0 #E6E7E8;
+    border: 4px solid #C90117;
+    box-shadow: 2px 2px 2px #333333;
+    margin: 0 0 10px 0;
+    padding: 16px;
+    width: 262px;
+}
+#NewbieModule h3 {
+    border-bottom: 3px dotted #C90117;
+    color: #C90117;
+    font-family: "museo-slab-1","museo-slab-2";
+    font-size: 18px;
+    font-weight: 800;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+    text-transform: none;	
+}
+#NewbieModule p {
+	margin-top: 10px;
+}
+#AddressId {
+	width: 258px;
+}
+#NoAccountYet {
+	float: left;
+	width: 300px;
+}
+#AlreadyAMember 
+{
+	float: left;
+	width: 300px;
+	margin-left: 20px;
+	padding-left: 20px;
+	border-left: dotted 1px #ccc;
+}
+.error-header {
+    color: #CC0000;
+    font-size: 11px;
+    font-style: italic;
+    margin: 10px 0 0.5em;
+}
+
+#AddressSuggestionsPopup p {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#AddressSuggestionsPopup p.error-header {
+    color: #CC0000;
+}
+
+#AddressSuggestionsPopup p strong {
+    color: #555;
+}
+
+#AddressSuggestionsPopup p.error-header > span,
+#AddressSuggestionsPopup p.error-header > span > strong {
+    color: #555 !important;
+}
+
+#AddressSuggestionsPopup ul li {
+    list-style-image: url('/food-delivery/img/teal_arrow.png');
+    margin: 0 0 10px 30px;
+}
+
+.none-suggested {
+    margin: 25px 0 0 30px;
+}
+
+/* fancybox */
+#fancybox-overlay
+{
+    overflow: hidden;
+    opacity: 0.5 !important;
+}
+#fancybox-outer
+{
+    height: auto !important;
+}
+#fancybox-content .fourcol
+{
+    width: 662px !important;
+    padding: 0;
+    height: 100%;
+}
+#fancybox-close
+{
+    background: none repeat scroll 0 0 transparent;
+    color: #339999;
+    font-size: 11px;
+    height: 16px;
+    right: 5px;
+    text-align: right;
+    top: -18px;
+    width: 34px;
+    z-index: 9999 !important;
+}
+#fancybox-close:visited, #fancybox-close:active
+{
+}
+#fancybox-bg-n
+{
+    background-color: #ccc !important;
+    z-index: 9998 !important;
+    background-image: none !important;
+}
+.popup
+{
+    background-color: transparent;
+    color: #555555;
+    height: 350px; 
+    overflow-x: hidden !important;
+  	padding: 20px;
+    width: auto;
+}
+.popup h2
+{
+	font-family: "museo-slab-1" , "museo-slab-2", "museo-slab";
+	font-weight: 700;
+	color: #c90117 !important;
+	font-size: 24px;
+	padding-bottom: 5px;
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 15px;
+}
+.popup label
+{
+	font-size: 11px;
+}
+.popup label span
+{
+	font-style: italic;
+	color: #999;
+}
+.popup h4.button
+{
+	width: 235px;
+	height: 20px;
+	padding: 6px 10px;
+	margin: 7px 0 5px 0;
+	display: block;
+	font-size: 14px;
+	text-transform: none;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: left;
+	background: #339999 url(../img/button-overlay.png) 0 50% repeat-x !important;
+	border: 1px solid #339999;
+	cursor: pointer;
+}
+.popup h4.button:hover
+{
+	text-decoration: none;
+	background-color: #236969 !important;
+}
+
+/* Restaurant Address Widget*/
+.restaurant-address-widget
+{
+    position: relative;
+    text-align: center;
+    border-radius: 24px;
+    border: #aaa;
+    border: 10px solid rgba(0,0,0, 0.4);
+    z-index: 2;
+}
+.IE8 .restaurant-address-widget
+{
+    border: 10px solid  #AAA;
+}
+.restaurant-address-widget h1 
+{
+    border-top-right-radius: 14px;
+    border-top-left-radius: 14px;
+    background: #212020;
+    color: #fff;
+    padding: 11px 0 9px;
+    font: 24px "alternate-gothic-no-3-d", Arial, Helvetica, sans-serif;
+}
+.restaurant-address-widget .address-widget-body
+{
+    padding: 12px 20px 15px;
+}
+.restaurant-address-widget .address-description
+{
+    font: 14px Helvetica, sans-serif;
+    color: #555;
+}
+.restaurant-address-widget .delivery-chooser
+{
+    font: 700 12px 'museo-slab', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 10px 0 15px;
+    vertical-align: middle;
+}
+.restaurant-address-widget  .delivery-chooser .radio-inline 
+{
+    display: inline;
+}
+.restaurant-address-widget .delivery-chooser input 
+{
+    display: inline;
+    vertical-align: middle;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    margin: 0 5px 0 0 !important;
+    padding: 0;
+    outline: none;
+}
+
+.IE8 .restaurant-address-widget .delivery-chooser input,
+.IE9 .restaurant-address-widget .delivery-chooser input
+{
+    margin-top: 3px !important;
+}
+
+.restaurant-address-widget .delivery-chooser label 
+{
+    display: inline-block;
+    color: #212020;
+    vertical-align: middle;
+    margin-top: 2px;
+}
+.restaurant-address-widget .delivery-chooser span.or 
+{
+    vertical-align: middle;
+    color: #d0140c;
+    font-weight: 900;
+    padding: 0 10px 3px 10px;
+}
+.restaurant-address-widget .single-address-entry-module 
+{
+    height: 22px;
+    background: none;
+    width: auto;
+    border-radius: 6px;
+    padding: 5px 10px 5px 10px;
+    -webkit-box-shadow: inset 2px 3px 7px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 2px 3px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 2px 3px 7px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.restaurant-address-widget .predicted 
+{
+    font-size: 13px;
+}
+.restaurant-address-widget .single-address-input 
+{
+    border-radius: 6px;
+    padding-left: 10px;
+    font-family: Arial;
+    font-size: 13px;
+}
+.restaurant-address-widget .single-address-entry-module .single-address-input 
+{
+    margin-left: 0 !important;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.restaurant-address-widget .address-button
+{
+    display: block;
+    font-family: museo-slab-1, museo-slab-2, museo-slab;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: #c90117;
+    font-weight: 700;
+    color: #fff;
+    line-height: 16px;
+    width: 100%;
+    margin: 15px 0 0 auto;
+    border-radius: 6px;
+    padding: 9px 10px 9px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+}
+.address-widget .errorInput
+{
+    background: url('/img/sprites/splashpage-sprite.png') no-repeat -329px -40px;
+    font-style: normal;
+    padding-left: 25px !important;
+    background-size: 360px 137px;
+}
+.address-widget .single-address-input.errorInput
+{
+    background-position: -334px -44px;
+    padding-left: 20px !important;
+    margin-left: -5px !important;
+}
+.address-widget .single-address-input:focus, 
+.address-widget .single-address-input.errorInput:focus
+{
+    background: none;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+.IE7 .address-widget .single-address-input.errorInput,
+.IE8 .address-widget .single-address-input.errorInput
+{
+    background-position: -679px -50px;
+}
+.IE .address-widget-body .login  
+{
+    line-height: 1em;
+}
+#FPO{ margin-top: 0;}
+#MessageArea{ margin-bottom: 10px;}
+#addressWidget{ border-width: 10px; border-style: solid; border-color: #666; border-color: rgba(0,0,0,.4);
+                border-radius: 22px; background: 0 0; width: 300px; box-sizing: border-box; -moz-box-sizing: border-box; padding: 0;}
+#addressWidget input[type="radio"] { margin: 0 4px 0 0 !important; vertical-align: middle;}
+#addressWidget .address-widget-header{ background: #000; border-radius: 12px 12px 0 0; padding: 15px 0 7px;}
+#addressWidget .address-widget-header h1, #addressWidget .address-widget-header p{ color: #fff; font-family: alternate-gothic-no-3-d; text-align: center; text-transform: uppercase; font-size: 16px; line-height: 16px;}
+#addressWidget .address-widget-header h1{ font-size: 24px; line-height: 24px; margin-top: 3px; font-weight: 400;}
+#addressWidget .address-widget-body{ background: #fff; padding: 10px 15px 15px; border-radius: 0 0 12px 12px;}
+#addressWidget .delivery-chooser{ padding-bottom: 12px; text-align: center; height: 10px;}
+#addressWidget .address-widget-body .delivery-chooser label, #addressWidget .delivery-chooser span{ font-family: museo-slab-1,museo-slab-2,museo-slab;}
+#addressWidget .address-widget-body .delivery-chooser label{ font-weight: 700; font-size: 12px; color: #212020; text-transform: uppercase; vertical-align: middle;}
+#addressWidget .delivery-chooser span{ font-weight: 900; font-size: 14px; color: #ce2b31; margin: 0 8px; vertical-align: middle;}
+#addressWidget .address-widget-body label{ color: #9f9f9f; font-weight: 700;}
+#addressWidget .address-widget-body label i{ font-weight: 400; color: #9f9f9f;}
+#addressWidget .form-field{ margin-top: 5px;}
+#addressWidget .form-field label{ width: 230px !important;}
+.form-field .saved-address, .form-field .ac_input{ margin-top: 2px !important;}
+.single-address-entry-module{ border: none; width: 210px; height: 22px; background: 0 0; box-shadow: none; margin: 0; padding: 7px 0 7px 10px;}
+.single-address-entry-module .single-address-input{ color: #555; font-size: 13px;}
+.single-address-input::-ms-clear{ display: none;}
+.input-fade{ position: absolute; background-color: rgba(0,0,0,0); background-image: -webkit-linear-gradient(right,#fff,rgba(255,255,255,0)); 
+             background-image: -moz-linear-gradient(right,#fff,rgba(255,255,255,0)); background-image: -o-linear-gradient(right,#fff,rgba(255,255,255,0)); 
+             background-image: -ms-linear-gradient(right,#fff,rgba(255,255,255,0)); background-image: linear-gradient(to left,#fff,rgba(255,255,255,0));
+             height: 22px; width: 30px; left: 191px; z-index: 10;}
+#addressWidget .predicted{ font-size: 13px;}
+.ac_results{ box-sizing: border-box !important;}
+.saved-address a, .saved-address a:visited{ color: #9f9f9f; text-decoration: none; outline: 0; -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+                                             -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.2); box-shadow: inset 0 1px 3px rgba(0,0,0,.2); 
+                                             border: 1px solid #b3b6b5; border-radius: 6px; position: relative; display: block; width: 250px; 
+                                             box-sizing: border-box; -moz-box-sizing: border-box; padding: 9px; z-index: 20; background: #fff; cursor: pointer;}
+.saved-address a:hover{ color: #555;}
+.saved-address-list{ background: #fff; z-index: 100; border: 1px solid #b3b6b5; color: #555; left: 25px; padding-top: 5px; position: absolute; top: 165px; 
+                     width: 250px; box-sizing: border-box; -moz-box-sizing: border-box; list-style: none;}
+.saved-address-list li{ padding: 10px; cursor: default;}
+.saved-address-list li:hover{ background-color: #212020; color: #fff; font-weight: 700;}
+.saved-address-list li.enterAddressLink{ background: #399; color: #fff; text-align: center;}
+.select-button-area{ width: 30px; height: 36px; position: absolute; right: 0;}
+.select-button{ position: absolute; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; 
+                border-top: 5px solid #399; right: 10px; top: 15px;}
+#addressWidget .search-keyword.ac_input{ border: 1px solid #b3b6b5; border-radius: 6px; padding: 12px 10px !important; line-height: 13px !important;
+                                          font-size: 13px; height: 13px !important; width: 228px; color: #555;}
+#addressWidget .search-keyword.ac_input, #addressWidget .search-keyword.ac_input:focus{ -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.2) !important; 
+                        -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,.2) !important; 
+                        box-shadow: inset 0 1px 3px rgba(0,0,0,.2) !important;}
+.ac_input:-ms-input-placeholder{ color: #9E9E9E !important;}
+#addressWidget #FindFood{ background: #c90117; font-family: museo-slab-1,museo-slab-2,museo-slab !important; 
+                          text-transform: uppercase; font-size: 16px; font-weight: 700; border-radius: 6px; text-align: center; 
+                          float: right; height: auto; width: auto; padding: 10px 12px 9px; line-height: 16px; margin-top: 15px;}
+.container-overlay{ border-radius: 22px;}
+#StayConnected{ background: #fff; border-radius: 10px; box-sizing: border-box;}
+.social-buttons-section{ padding: 18px 25px 0px;}
+.social-adv-section{ text-align: center;}
+.social-sharing-newWidget .social-buttons{ height: 130px; margin: 8px 0 15px; border-bottom: 1px dotted #aaa;}
+.social-sharing-newWidget h4{ font-family: museo-slab; font-weight: 900; font-size: 18px; color: #000;}
+.social-sharing-newWidget .social-icons{ border-bottom: 1px dotted #aaa; padding-bottom: 15px; height: 40px;}
+.social-sharing-newWidget .social-icon{ margin-right: 10px; width: 42px; height: 42px; display: inline-block;}
+#___plusone_0{ width: 70px !important;}
+.social-sharing-newWidget .social-blog{ background-position: -4px -110px; width: 145px; height: 38px; margin: 0 auto; display: block;}
+.social-sharing-newWidget .social-blog:hover{ background-position: -150px -110px; cursor: pointer;}
+.social-sharing-newWidget .social-options{ text-align: center; height: 0; width: 0; overflow: hidden;}
+.social-sharing-newWidget .social-options.visible-button{ height: auto; width: auto; overflow: visible;}
+.social-sharing-newWidget .social-button-container{ line-height: 1; height: 25px;}
+.social-sharing-newWidget .social-link{ font-weight: 700; line-height: 1;}
+.social-sharing-newWidget .social-icon:hover{ cursor: pointer;}
+.social-sharing-newWidget .social-icons-details{ margin-top: 15px;}
+.social-sharing-newWidget .twitter-icon{ background-position: -7px -3px;}
+.social-sharing-newWidget .facebook-icon{ background-position: -62px -3px;}
+.social-sharing-newWidget .googleplus-icon{ background-position: -117px -3px;}
+.social-sharing-newWidget .instagram-icon{ background-position: -172px -3px;}
+.social-sharing-newWidget .youtube-icon{ background-position: -227px -3px;}
+.social-sharing-newWidget .twitter-icon.active{ background-position: -7px -56px;}
+.social-sharing-newWidget .facebook-icon.active{ background-position: -62px -56px;}
+.social-sharing-newWidget .googleplus-icon.active{ background-position: -117px -56px;}
+.social-sharing-newWidget .instagram-icon.active{ background-position: -172px -56px;}
+.social-sharing-newWidget .youtube-icon.active{ background-position: -227px -56px;}
+.social-sharing-newWidget .news-col .info-header{ display: inline-block;}
+.social-sharing-newWidget .news-col .news-details{ position: relative;}
+.social-sharing-newWidget .news-col .news-quote{ background-position: -8px -314px; width: 280px; height: 107px;}
+.social-sharing-newWidget .news-col .news-image-link{ position: absolute; top: 5px; left: 7px; background-position: -16px -144px; width: 262px; height: 76px; display: block;}
+.social-sharing-newWidget .news-col .news-image-link:hover{ background-position: -16px -230px;}
+.social-sharing-newWidget .social-blog, .social-sharing-newWidget .social-icon{ background-size: 297px 152px; 
+          background-image: url(http://content.seamless.com/swdesign/img/step1_banners_side/20140307-splashpage-sidebar-sprite.png); background-repeat: no-repeat;}.IE8 .social-sharing-newWidget .twitter-icon{ background-position: -17px -850px;}.IE8 .social-sharing-newWidget .facebook-icon{ background-position: -71px -850px;}
+.IE8 .social-sharing-newWidget .googleplus-icon{ background-position: -127px -850px;}
+.IE8 .social-sharing-newWidget .instagram-icon{ background-position: -182px -850px;}
+.IE8 .social-sharing-newWidget .youtube-icon{ background-position: -237px -850px;}
+.IE8 .social-sharing-newWidget .twitter-icon:hover{ background-position: -17px -897px;}
+.IE8 .social-sharing-newWidget .facebook-icon:hover{ background-position: -71px -897px;}
+.IE8 .social-sharing-newWidget .googleplus-icon:hover{ background-position: -127px -897px;}
+.IE8 .social-sharing-newWidget .instagram-icon:hover{ background-position: -182px -897px;}
+.IE8 .social-sharing-newWidget .youtube-icon:hover{ background-position: -237px -897px;}
+.IE8 .social-sharing-newWidget .social-blog{ background-position: -16px -953px;}
+.IE8 .social-sharing-newWidget .social-blog:hover{ background-position: -161px -953px;}
+.IE8 .news-col .news-quote{ background-position: -17px -989px;}
+.IE8 .news-col .news-image-link{ background-position: -312px -850px;}
+.IE8 .news-col .news-image-link:hover{ background-position: -312px -936px;}
+ iframe#atlas-tag { border: none; }
+ .fb-like iframe {width:auto !important; height:auto !important;}  
