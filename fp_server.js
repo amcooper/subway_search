@@ -24,11 +24,11 @@ app.use(session({
 }));
 
 app.get('/', function(req, res) {
-	res.render("b_index.ejs", { valid_user: false });
+	res.render("fresh_start.html");
 });
 
 app.get('/start', function(req, res) {
-	res.redirect('/');
+	res.render("start_full.html");
 });
 
 app.post('/register', function(req, res) {
@@ -48,8 +48,8 @@ app.post('/register', function(req, res) {
 		db.run("INSERT INTO users (username, password) VALUES (?, ?)", username, hash, function(err) {
 			if (err) { throw err; }  
 			req.session.valid_user = true;
-			res.render("b_index.ejs", { valid_user: req.session.valid_user });
-			// res.redirect('/start');
+			// res.render("b_index.ejs", { valid_user: req.session.valid_user });
+			res.redirect('/start');
 			// res.sendFile(__dirname + '/public/start.html');
 		});
 	}
@@ -68,8 +68,8 @@ app.post('/session', function(req, res) {
 			var passwordMatches = bcrypt.compareSync(password, row.password);
 			if (passwordMatches) {
 				req.session.valid_user = true;
-				res.render("b_index.ejs", { valid_user: req.session.valid_user });
-					// res.redirect('/start');
+				// res.render("b_index.ejs", { valid_user: req.session.valid_user });
+				res.redirect('/start');
 				// res.sendFile(__dirname + '/public/start.html');
 			} else {
 				res.redirect('/');

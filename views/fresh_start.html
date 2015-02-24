@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	</head>
+	<body>
+		<h4>Registration</h4>
+		<form action="/register" method="POST">
+	        <h2>Register</h2>
+	        <label for="inputEmail">Email address</label>
+	        <input type="email" name="username" id="inputEmail" placeholder="Email address" required autofocus>
+	        <label for="inputPassword" class="sr-only">Password</label>
+	        <input type="password" name="password" id="inputPassword" placeholder="Password" required>
+	        <label for="inputConfirmPassword">Confirm password</label>
+	        <input type="password" name="confirm_password" id="inputConfirmPassword" placeholder="Confirm password" required>
+	        <button type="submit">R e g i s t e r</button>
+        </form>
+
+        <h4>Authentication</h4>
+		<form action="/session" method="POST">
+	        <h2>Log in</h2>
+	        <label for="inputEmail">Email address</label>
+	        <input type="email" name="username" id="inputEmail" placeholder="Email address" required autofocus>
+	        <label for="inputPassword">Password</label>
+	        <input type="password" name="password" id="inputPassword" placeholder="Password" required>
+	        <button type="submit">Login</button>
+    	</form>
+	</body>
+</html>
