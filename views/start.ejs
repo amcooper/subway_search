@@ -13,21 +13,22 @@
 
 	<body>
 		<div id="restfulRoutes">
+			<h3>Choose a saved route:</h3>
 			<ul id="routesList">
 				<% var rowsObj = JSON.parse(rows); %>
 				<% for (var i=0; i<rowsObj.length; i++) { %>
-					<li><%= rowsObj[i].nickname %>&nbsp;:&nbsp;<%= rowsObj[i].route_origin %>&nbsp;=>&nbsp;<%= rowsObj[i].route_destination %></li>
+					<li><%= rowsObj[i].nickname %>&nbsp;:&nbsp;<%= rowsObj[i].route_origin %>&nbsp;=>&nbsp;<%= rowsObj[i].route_destination %>&nbsp;<label for="search_term">Search term:</label><input type="text" id="search_term" placeholder="Search term" />&nbsp;<button onclick="calcRoute();">Search</button></li>
 				<% } %>
 			</ul>
 
-			<h3>Add a route here:</h3>
+			<h3>Or search/add a new route:</h3>
 			<input type="text" id="newRouteNickname" placeholder="e.g. 'home-to-work'">
 			<input type="text" id="newRouteOrigin" placeholder="50 Broadway, NY, NY">
 			<input type="text" id="newRouteDestination" placeholder="80 5th Av, NY, NY">
-			<button id = "addNewRoute">ADD IT!</button>
+			<button onclick="calcRoute();">Search</button>&nbsp;<button id = "addNewRoute">ADD IT!</button>
 		</div>
 
-		<div id="control">
+<!-- 		<div id="control">
             <label for="address">Addresses:</label>
             <input type="text" id="address_origin" placeholder="Origin" />&nbsp;<input type="text" id="address_destination" placeholder="Destination" />
             <br>
@@ -35,7 +36,7 @@
             <input type="text" id="search_term" placeholder="Search term" />
             <br>
             <button onclick="calcRoute();">Search</button>
-        </div>
+        </div> -->
         <div id="directions-panel"></div>
 		<div id="googleMap"></div>
 
