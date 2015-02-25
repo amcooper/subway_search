@@ -8,14 +8,17 @@ var bcrypt = require('bcrypt');
 var sqlite3 = require('sqlite3').verbose();
 var cors = require('cors');
 var fs = require('fs');
+var path = require('path');
 var secret = require('./secret.json'); // For password stored in JSON object & gitignored, rather than in a database.
 var db = new sqlite3.Database("fp.db");
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(cors());
 app.use(bodyParser.json({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(session({
 	secret: "cookie",
@@ -25,6 +28,7 @@ app.use(session({
 
 app.get('/', function(req, res) {
 	console.log("Root route."); //debug
+	console.log(">>>" + __dirname + "/public/html/fresh_start.html"); //debug
 	res.sendFile(__dirname + "/public/html/fresh_start.html");
 });
 
@@ -40,6 +44,7 @@ app.post('/register', function(req, res) {
 	console.log("Password: " + password); //debug
 	var confirm_password = req.body.confirm_password;
 	console.log("Confirm: " + confirm_password); //debug
+	// res.send(req.body); //debug
 	if (password !== confirm_password) {
 		console.log("Passwords do not match.");
 		res.redirect('/');
@@ -51,7 +56,7 @@ app.post('/register', function(req, res) {
 			req.session.valid_user = true;
 			// res.render("b_index.ejs", { valid_user: req.session.valid_user });
 			// res.redirect('/start');
-			res.sendFile(__dirname + '/public/html/start_full.html');
+			res.redirect('/routes');
 		});
 	}
 });
@@ -59,7 +64,7 @@ app.post('/register', function(req, res) {
 app.post('/session', function(req, res) {
 	console.log("Session."); //debug
 	var username = req.body.username;
-	console.log("Username: " + req.body.username + " " + username); //debug
+	console.log("Username: " + username); //debug
 	var password = req.body.password; 
 	console.log("Password: " + password); //debug
 	db.get("SELECT * FROM users WHERE username = ?", username, function(err, row) {
@@ -71,7 +76,7 @@ app.post('/session', function(req, res) {
 				req.session.valid_user = true;
 				// res.render("b_index.ejs", { valid_user: req.session.valid_user });
 				// res.redirect('/start');
-				res.sendFile(__dirname + '/public/html/start_full.html');
+				res.redirect('/routes');
 			} else {
 				res.redirect('/');
 			}
@@ -80,9 +85,14 @@ app.post('/session', function(req, res) {
 });
 
 app.get('/routes', function(req, res) {
+	console.log("Routes route.");
   db.all("SELECT * FROM routes", function(err, rows) {
     if (err) { throw err; }
-    res.json(rows);
+    console.log("rows: " + JSON.stringify(rows));
+    res.render("start.ejs", {rows: JSON.stringify(rows)});
+	// var str = fs.readFileSync('/js/start.ejs', 'utf8');
+	// var rendered = ejs.render(str, {rows: rows});
+	// res.send(rendered);    
   });
 });
 

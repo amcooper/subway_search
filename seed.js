@@ -5,7 +5,7 @@ var sqlite3 = require("sqlite3").verbose();
 var db = new sqlite3.Database("fp.db");
 
 db.run("INSERT INTO users (username, password) VALUES (?, ?)",
-  'guest', bcrypt.hashSync('guest',11),
+  'guest@guest.com', bcrypt.hashSync('guest',11),
   function(err) {
     if (err) { throw err; }
   }
