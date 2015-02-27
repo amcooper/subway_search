@@ -1,12 +1,12 @@
-Lorimer St,40.714067, -73.950275
-Graham Av,40.714588, -73.944031
-Grand St,40.711904, -73.940641
-Montrose Av,40.707732, -73.939868
-Morgan Av,40.706138, -73.933152
-Jefferson St,40.706609, -73.922959
-DeKalb Av,40.703828, -73.918378
-Myrtle-Wyckoff Avs,40.699826, -73.911608
-Halsey St,40.695572, -73.904120
-Wilson Av,40.688763, -73.904012
-Bushwick Av - Aberdeen St,40.682808, -73.905257
-Broadway Jct,40.678862, -73.903272
+[{stationName: "Lorimer St", latitude: 40.714067, longitude: -73.950275},
+{stationName: "Graham Av", latitude: 40.714588, longitude: -73.944031}, 
+{stationName: "Grand St", latitude: 40.711904, longitude: -73.940641}, 
+{stationName: "Montrose Av", latitude: 40.707732, longitude: -73.939868}, 
+{stationName: "Morgan Av", latitude: 40.706138, longitude: -73.933152}, 
+{stationName: "Jefferson St", latitude: 40.706609, longitude: -73.922959}, 
+{stationName: "DeKalb Av", latitude: 40.703828, longitude: -73.918378}, 
+{stationName: "Myrtle-Wyckoff Avs", latitude: 40.699826, longitude: -73.911608}, 
+{stationName: "Halsey St", latitude: 40.695572, longitude: -73.904120}, 
+{stationName: "Wilson Av", latitude: 40.688763, longitude: -73.904012}, 
+{stationName: "Bushwick Av - Aberdeen St", latitude: 40.682808, longitude: -73.905257}, 
+{stationName: "Broadway Jct", latitude: 40.678862, longitude: -73.903272}]
