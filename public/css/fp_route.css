@@ -1,7 +1,39 @@
-#directions-panel {
-    height: 100%;
+* {
+    font-family: Helvetica, sans-serif;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.container {
+    position: absolute;
+    width: 100%;
+}
+
+p h3 {
+    margin: 0px auto;
+}
+
+#titleBar {
+    height: 50px;
+    margin: 12px auto;
+    font-family: 'Oleo Script', serif;
+    color: #ffffff;
+    background: #006600;
+    font-size: 24pt;
+}
+
+#restfulRoutes {
+    height: 100px;
+    margin: 0px auto;
+    background: #ccffcc;
+    overflow: scroll;
+}
+
+#directionsPanel {
     float: right;
     width: 390px;
+    height: 542px;
     overflow: auto;
 }
 
@@ -16,7 +48,10 @@
 }*/
 
 #googleMap {
+    margin-bottom: 0px;
     margin-right: 400px;
+    width: 872px;
+    height: 542px;
 }
 
 @media print {

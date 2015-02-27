@@ -1,38 +1,32 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>The Wick of Bushwick</title>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=geometry,places"></script>
-		<script type="text/javascript" src="/js/fp_main.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk_tC_xXaWhmGgIKKrqvLzlOoN2vvlBwg"></script>
+		<script type="text/javascript" src="../js/fp_main.js"></script>
 		<meta charset="utf-8">
 <!-- 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> -->
 		<!-- <link href="/css/fp_map.css" rel="stylesheet" type="text/css"> -->
-		<link href="/css/fp_route.css" rel="stylesheet" type="text/css"> 
-		<link href="//fonts.googleapis.com/css?family=Oleo Script&subset=latin" rel="stylesheet" type="text/css">
+		<link href="../css/fp_route.css" rel="stylesheet" type="text/css"> 
 	</head>
 
 	<body>
 		<div class="container">
-			<div id="titleBar" class="section">
-				The Wick of Bushwick&nbsp;<button>Log out</button>
+			<div id="title" class="section">
+				<h4>The Wick of Bushwick</h4>&nbsp;<button>Log out</button>
 			</div>
 			<div id="restfulRoutes" class="section">
-				<b>Search/add a new route:</b>
+				<h3>Choose a saved route:</h3>
+				<ul id="routesList">
+				</ul>
+
+				<h3>Or search/add a new route:</h3>
 				<input type="text" id="newRouteNickname" placeholder="e.g. 'home-to-work'">
 				<input type="text" id="address_origin" placeholder="50 Broadway, NY, NY">
 				<input type="text" id="address_destination" placeholder="80 5th Av, NY, NY">
-				<input type="text" id="search_term" placeholder="e.g. bakery">
 				<button onclick="calcRoute();">Search</button>&nbsp;<button id = "addNewRoute">ADD IT!</button>
-
-				<br /><br /> 
-<!-- 				<b>Or choose a saved route:</b>
-				<ul id="routesList">
-					<% var rowsObj = JSON.parse(rows); %>
-					<% for (var i=0; i<rowsObj.length; i++) { %>
-						<li><%= rowsObj[i].nickname %>&nbsp;:&nbsp;<%= rowsObj[i].route_origin %>&nbsp;=>&nbsp;<%= rowsObj[i].route_destination %>&nbsp;<label for="search_term">Search term:</label><input type="text" id="search_term" placeholder="Search term" />&nbsp;<button onclick="calcRoute();">Search</button></li>
-					<% } %>
-				</ul> -->
 			</div>
 
 	<!-- 		<div id="control">
@@ -44,12 +38,14 @@
 	            <br>
 	            <button onclick="calcRoute();">Search</button>
 	        </div> -->
-	        <div id="directions-panel"></div>
-			<div id="googleMap"></div>
+	        <div class="section">
+		        <div id="directions-panel"></div>
+				<div id="googleMap"></div>
+			</div>
 		</div>
 
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
 		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
-		<script type="text/javascript" src="/js/start.js"></script>
+		<script type="text/javascript" src="../js/start.js"></script>
 	</body>
 </html>

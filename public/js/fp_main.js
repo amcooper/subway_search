@@ -16,6 +16,11 @@ function initialize () {
 	// map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 }
 
+function topTen(result) {
+  var map = new google.maps.Map(document.getElementById("googleMap"), {center: new google.maps.LatLng(40.659700, -73.942594), zoom: 11});
+  var service = new google.places.PlacesService(map);
+}
+
 function calcRoute() {
     var start = document.getElementById('address_origin').value;
     var end = document.getElementById('address_destination').value;
@@ -26,7 +31,7 @@ function calcRoute() {
     };
     directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-      	console.log(response);
+      	console.log("Response: " + JSON.stringify(response));
         directionsDisplay.setDirections(response);
       }
     });
