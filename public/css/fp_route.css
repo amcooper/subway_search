@@ -14,6 +14,10 @@ p h3 {
     margin: 0px auto;
 }
 
+li {
+    font-family: serif;
+}
+
 #titleBar {
     height: 50px;
     margin: 0px auto;
@@ -40,6 +44,11 @@ p h3 {
     height: 542px;
     overflow: auto;
     font-size: 10pt;
+    font-family: serif;
+}
+
+#searchResultList {
+    font-family: serif;
 }
 
 /*#control {
