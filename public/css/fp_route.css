@@ -16,7 +16,9 @@ p h3 {
 
 #titleBar {
     height: 50px;
-    margin: 12px auto;
+    margin: 0px auto;
+    padding-top: 2px;
+    padding-left: 12px;
     font-family: 'Oleo Script', serif;
     color: #ffffff;
     background: #006600;
@@ -26,15 +28,18 @@ p h3 {
 #restfulRoutes {
     height: 100px;
     margin: 0px auto;
+    padding-left: 12px;
     background: #ccffcc;
     overflow: scroll;
 }
 
 #directionsPanel {
     float: right;
+    padding-right: 12px;
     width: 390px;
     height: 542px;
     overflow: auto;
+    font-size: 10pt;
 }
 
 /*#control {

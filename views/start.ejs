@@ -15,15 +15,17 @@
 	<body>
 		<div class="container">
 			<div id="titleBar" class="section">
-				The Wick of Bushwick&nbsp;<button>Log out</button>
+				The LineHopper&nbsp;<button>Log out</button>
 			</div>
 			<div id="restfulRoutes" class="section">
-				<b>Search/add a new route:</b>
-				<input type="text" id="newRouteNickname" placeholder="e.g. 'home-to-work'">
-				<input type="text" id="address_origin" placeholder="50 Broadway, NY, NY">
-				<input type="text" id="address_destination" placeholder="80 5th Av, NY, NY">
-				<input type="text" id="search_term" placeholder="e.g. bakery">
-				<button onclick="calcRoute();">Search</button>&nbsp;<button id = "addNewRoute">ADD IT!</button>
+				<p>
+					<b>Search/add a new route:</b>
+					<input type="text" id="newRouteNickname" placeholder="e.g. 'home-to-work'">
+					<input type="text" id="address_origin" placeholder="50 Broadway, NY, NY">
+					<input type="text" id="address_destination" placeholder="80 5th Av, NY, NY">
+					<input type="text" id="search_term" placeholder="e.g. bakery">
+					<button onclick="calcRoute();">Search</button>&nbsp;<button id = "addNewRoute">ADD IT!</button>
+				</p>
 
 				<br /><br /> 
 <!-- 				<b>Or choose a saved route:</b>
@@ -44,7 +46,7 @@
 	            <br>
 	            <button onclick="calcRoute();">Search</button>
 	        </div> -->
-	        <div id="directions-panel">
+	        <div id="directionsPanel">
 	        	<ol id="searchResultList"></ol>
 	        </div>
 			<div id="googleMap"></div>
