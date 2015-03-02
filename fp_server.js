@@ -140,6 +140,12 @@ app.delete('/route/:id', function(req, res) {
   });
 });
 
+app.get('/logout', function(req, res) {
+	console.log("Logging out..."); //debug
+	req.session.valid_user = false;
+	res.redirect('/');
+});
+
 // app.listen(80);
 // console.log('Listening on port 80...');
 app.listen(3000);

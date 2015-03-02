@@ -23,9 +23,14 @@ li {
     margin: 0px auto;
     padding-top: 2px;
     padding-left: 12px;
-    font-family: 'Oleo Script', serif;
+/*    font-family: 'Oleo Script', serif; */
     color: #ffffff;
     background: #006600;
+/*    font-size: 24pt; */
+}
+
+#titleForm {
+    font-family: 'Oleo Script', serif;
     font-size: 24pt;
 }
 
