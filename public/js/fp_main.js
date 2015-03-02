@@ -12,6 +12,7 @@ var sampleRoute = [{stationName: "Lorimer St", latitude: 40.714067, longitude: -
   {stationName: "Wilson Av", latitude: 40.688763, longitude: -73.904012}, 
   {stationName: "Bushwick Av - Aberdeen St", latitude: 40.682808, longitude: -73.905257}, 
   {stationName: "Broadway Jct", latitude: 40.678862, longitude: -73.903272}];
+var finalList = [];
 
 function initialize () {
 	var mapProp = {
@@ -30,7 +31,6 @@ function initialize () {
 
 function topTen(result) {
   function callback(results, status) {
-    var olElement = document.getElementById("searchResultList");
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         var place = results[i];
@@ -39,23 +39,52 @@ function topTen(result) {
             map: map,
             title: "bakery"
         });
+        var olElement = document.getElementById("searchResultList");
         var liElement=document.createElement("li");
         liElement.innerHTML=place.name + " | " + place.formatted_address;
         olElement.appendChild(liElement);
       }
     }
   }
-  var map = new google.maps.Map(document.getElementById("googleMap"), {center: new google.maps.LatLng(40.659700, -73.942594), zoom: 11});
+
+  var map = new google.maps.Map(document.getElementById("googleMap"), {center: new google.maps.LatLng(40.659700, -73.942594), zoom: 13});
   var service = new google.maps.places.PlacesService(map);
-  // var service = new google.maps.places.PlacesService();
   // This is where the for loop of coordinates would go.
+  // for (var j=0; j < sampleRoute.length; j++) {
+  //   var request = {
+  //     location: new google.maps.LatLng(sampleRoute[j].latitude, sampleRoute[j].longitude),
+  //     radius: 500,
+  //     query: document.getElementById('search_term').value
+  //   };
+  //   var stationResultSet = service.textSearch(request, callback);
+  //   console.log("stationResultSet: " + stationResultSet);
+  //   for (var k=0; k<stationResultSet.length; k++) {
+  //     var place = stationResultSet[k];
+  //     var placeCoord = new google.maps.LatLng(place.latitude, place.longitude);
+  //     place.distance = google.maps.geometry.spherical.computeDistanceBetween(request.location,placeCoord);
+  //     finalList.push(place);
+  //   }
+  // }
+
   var request = {
-    location: new google.maps.LatLng(40.659, -73.943),
+    location: map.center,
     radius: 500,
     query: document.getElementById('search_term').value
-  };
+  };  
   service.textSearch(request, callback);
+  // finalList.sort(function (a, b) {
+  //   if (a.distance > b.distance) {
+  //     return 1;
+  //   }
+  //   if (a.distance < b.distance) {
+  //     return -1;
+  //   }
+  //   // a must be equal to b
+  //   return 0;
+  // });
+  // console.log("finalList: " + finalList);
 }
+
 
 function calcRoute() {
     var start = document.getElementById('address_origin').value;
