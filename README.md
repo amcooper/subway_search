@@ -1,5 +1,7 @@
 #The Line Hopper
 
+[The Line Hopper](http://adam.princesspeach.nyc) >>> Moving soon to theadamcooper.com  
+
 The Line Hopper is a modified Google Map search. The user enters a start point, end point, and search term. The Line Hopper returns a list of search results ranked by distance from subway stations and rating.\* The application also allows the user to save routes for future use.\*  
 
 
