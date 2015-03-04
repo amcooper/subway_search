@@ -34,6 +34,7 @@ function topTen(result) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       for (var i = 0; i < results.length; i++) {
         var place = results[i];
+        console.log("place: " + JSON.stringify(place)); //debug
         var marker = new google.maps.Marker({
             position: place.geometry.location,
             map: map,
@@ -41,7 +42,7 @@ function topTen(result) {
         });
         var olElement = document.getElementById("searchResultList");
         var liElement=document.createElement("li");
-        liElement.innerHTML=place.name + " | " + place.formatted_address;
+        liElement.innerHTML="<span style='font-size:12pt;font-family:serif'>" + place.name + "</span><br>" + "<span style='font-size:10pt;font-family:serif'>" + place.formatted_address + "</span>";
         olElement.appendChild(liElement);
       }
     }
