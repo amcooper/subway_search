@@ -13,95 +13,119 @@ var sampleRoute = [{stationName: "Lorimer St", latitude: 40.714067, longitude: -
   {stationName: "Bushwick Av - Aberdeen St", latitude: 40.682808, longitude: -73.905257}, 
   {stationName: "Broadway Jct", latitude: 40.678862, longitude: -73.903272}];
 var finalList = [];
+var bigArray = [];
+var request;
+var map;
 
 function initialize () {
+  console.log("function: initialize"); //debug
 	var mapProp = {
 		center : new google.maps.LatLng(40.739888, -73.990075),
 		zoom : 11,
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
-	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	// directionsDisplay = new google.maps.DirectionsRenderer();
-	// directionsDisplay.setMap(map);
-	// directionsDisplay.setPanel(document.getElementById('directions-panel'));
-	// var control = document.getElementById('control');
-	// control.style.display = 'block';
-	// map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+	map = new google.maps.Map(document.getElementById("dummyMap"), mapProp);
+  console.log("function: initialize: end");
 }
-
-function topTen(result) {
-  function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      for (var i = 0; i < results.length; i++) {
-        var place = results[i];
-        console.log("place: " + JSON.stringify(place)); //debug
-        var marker = new google.maps.Marker({
-            position: place.geometry.location,
-            map: map,
-            title: "bakery"
-        });
-        var olElement = document.getElementById("searchResultList");
-        var liElement=document.createElement("li");
-        liElement.innerHTML="<span style='font-size:12pt;font-family:serif'>" + place.name + "</span><br>" + "<span style='font-size:10pt;font-family:serif'>" + place.formatted_address + "</span>";
-        olElement.appendChild(liElement);
-      }
-    }
-  }
-
-  var map = new google.maps.Map(document.getElementById("googleMap"), {center: new google.maps.LatLng(40.659700, -73.942594), zoom: 13});
-  var service = new google.maps.places.PlacesService(map);
-  // This is where the for loop of coordinates would go.
-  // for (var j=0; j < sampleRoute.length; j++) {
-  //   var request = {
-  //     location: new google.maps.LatLng(sampleRoute[j].latitude, sampleRoute[j].longitude),
-  //     radius: 500,
-  //     query: document.getElementById('search_term').value
-  //   };
-  //   var stationResultSet = service.textSearch(request, callback);
-  //   console.log("stationResultSet: " + stationResultSet);
-  //   for (var k=0; k<stationResultSet.length; k++) {
-  //     var place = stationResultSet[k];
-  //     var placeCoord = new google.maps.LatLng(place.latitude, place.longitude);
-  //     place.distance = google.maps.geometry.spherical.computeDistanceBetween(request.location,placeCoord);
-  //     finalList.push(place);
-  //   }
-  // }
-
-  var request = {
-    location: map.center,
-    radius: 500,
-    query: document.getElementById('search_term').value
-  };  
-  service.textSearch(request, callback);
-  // finalList.sort(function (a, b) {
-  //   if (a.distance > b.distance) {
-  //     return 1;
-  //   }
-  //   if (a.distance < b.distance) {
-  //     return -1;
-  //   }
-  //   // a must be equal to b
-  //   return 0;
-  // });
-  // console.log("finalList: " + finalList);
-}
-
 
 function calcRoute() {
     var start = document.getElementById('address_origin').value;
     var end = document.getElementById('address_destination').value;
     var request = {
-    	origin: start,
-    	destination: end,
-    	travelMode: google.maps.TravelMode.TRANSIT
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.TRANSIT
     };
-    directionsService.route(request, function(response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-      	// console.log("Response: " + response);
-        // directionsDisplay.setDirections(response);
-        topTen(response);
+    // directionsService.route(request, function(response, status) {
+    //   if (status == google.maps.DirectionsStatus.OK) {
+    //     // console.log("Response: " + response);
+    //     // directionsDisplay.setDirections(response);
+    //     topTen(response);
+    //   }
+    // });
+}
+
+function compileAll() {
+  console.log("compileAll starts."); //debug
+// Sort big array by quotient
+  function bigSort() {
+    console.log("bigSort starts."); //debug
+
+    function fullDisplay() {
+      console.log("fullDisplay starts.");
+      for (var m=0; m<20; m++) {
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(bigArray[m].geometry.location.k, bigArray[m].geometry.location.D),
+              map: map,
+              title: request.query
+          });
+          var olElement=document.getElementById("searchResultList");
+          var liElement=document.createElement("li");
+          liElement.innerHTML="<span style='font-size:12pt;font-family:serif'>" + bigArray[m].name + "</span><br>" + "<span style='font-size:10pt;font-family:serif'>" + bigArray[m].formatted_address + "</span>";
+          olElement.appendChild(liElement);
       }
-    });
+
+      console.log("all done.");
+    }
+
+    function compare(a,b) {
+      if (a.myRank < b.myRank)
+         return -1;
+      if (a.myRank > b.myRank)
+        return 1;
+      return 0;
+    }
+
+    bigArray.sort(compare);
+
+    console.log("Length: " + bigArray.length); //debug
+    if (bigArray.length>20) { 
+      bigArray.slice(0,19); 
+      console.log("Array sliced"); //debug
+    }
+
+    fullDisplay();
+
+  }
+
+  function callback(results, status) {
+    console.log("function callback starts."); //debug
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      for (var ii = 0; ii < results.length; ii++) {
+        // console.log("results[ii]: " + JSON.stringify(results[ii])); //debug
+        if (results[ii].rating > 0) {
+          var place = results[ii].geometry.location;
+          results[ii].distance = google.maps.geometry.spherical.computeDistanceBetween(request.location,place);
+          // console.log("distance: " + results[ii].distance); //debug
+          results[ii].myRank = parseFloat(results[ii].distance)/parseFloat(results[ii].rating);
+          bigArray.push(results[ii]);
+        }
+      }
+    }
+  }
+
+
+  for (var j=0; j<sampleRoute.length; j++) {
+
+    console.log("Outer loop j: " + j.toString()); //debug
+    var dummyMap = new google.maps.Map(document.getElementById("dummyMap"),
+      {
+        center : new google.maps.LatLng(40.739888, -73.990075),
+        zoom : 11,
+        mapTypeId : google.maps.MapTypeId.ROADMAP
+      }
+    );
+    var service = new google.maps.places.PlacesService(dummyMap);
+    request = {
+      query : document.getElementById('search_term').value,
+      location : new google.maps.LatLng(sampleRoute[j].latitude, sampleRoute[j].longitude),
+      radius : 500
+    };
+    // console.log("request: " + JSON.stringify(request)); //debug
+    service.textSearch(request, callback);
+  }
+
+  bigSort();
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
