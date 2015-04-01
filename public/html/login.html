@@ -10,29 +10,33 @@
 	<body>
 		<div class="container">
 			<h1 id="mainTitle">The LineHopper</h1>
-			<div id="registration">
-				<form class="form-signin" action="/register" method="POST">
-					<h4 class="form-signin-heading">Register</h4>
-			        <label for="inputEmail" class="sr-only">Email address</label>
-			        <input type="email" name="username" id="inputEmail" placeholder="Email address" class="form-control" required autofocus>
-			        <label for="inputPassword" class="sr-only">Password</label>
-			        <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" required>
-			        <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
-			        <input type="password" name="confirm_password" id="inputConfirmPassword" placeholder="Confirm password" class="form-control" required>
-			        <button  class="btn btn-lg btn-primary btn-block" type="submit">R e g i s t e r</button>
-		        </form>
-	        </div> <!-- registration -->
-
-	        <div id="login">
-				<form class="form-signin" action="/session" method="POST">
-			        <h4 class="form-signin-heading">Log in</h4>
-			        <label for="inputEmail"  class="sr-only">Email address</label>
-			        <input type="email" name="username" id="inputEmail" placeholder="Email address" class="form-control" required autofocus>
-			        <label for="inputPassword" class="sr-only">Password</label>
-			        <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" required>
-			        <button  class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		    	</form>
-	    	</div> <!-- login -->
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-3" id="registration">
+					<form class="form-signin" action="/register" method="POST">
+						<h4 class="form-signin-heading">Register</h4>
+				        <label for="inputEmail" class="sr-only">Email address</label>
+				        <input type="email" name="username" id="inputEmail" placeholder="Email address" class="form-control" required autofocus>
+				        <label for="inputPassword" class="sr-only">Password</label>
+				        <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" required>
+				        <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
+				        <input type="password" name="confirm_password" id="inputConfirmPassword" placeholder="Confirm password" class="form-control" required>
+				        <button  class="btn btn-lg btn-primary btn-block" type="submit">R e g i s t e r</button>
+			        </form>
+		        </div> <!-- registration -->
+				<div class="col-md-2"></div>
+		        <div class="col-md-3" id="login">
+					<form class="form-signin" action="/session" method="POST">
+				        <h4 class="form-signin-heading">Log in</h4>
+				        <label for="inputEmail"  class="sr-only">Email address</label>
+				        <input type="email" name="username" id="inputEmail" placeholder="Email address" class="form-control" required autofocus>
+				        <label for="inputPassword" class="sr-only">Password</label>
+				        <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" required>
+				        <button  class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+			    	</form>
+		    	</div> <!-- login -->
+		    	<div class="col-md-2"></div>
+	    	</div> <!-- row -->
 	    </div> <!-- container -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

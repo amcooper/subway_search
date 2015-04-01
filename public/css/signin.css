@@ -9,7 +9,7 @@ body {
   font-family: 'Oleo Script', serif;
 }
 
-#login {
+/*#login {
   float: left;
   margin-left: 300px;
 }
@@ -17,7 +17,7 @@ body {
 #registration {
   float: right;
   margin-right: 300px;
-}
+}*/
 
 .form-signin {
   max-width: 330px;
